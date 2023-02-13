@@ -2,7 +2,7 @@
 
 this is my personal neovim configuration.
 
-#INDEX
+# INDEX
 
 - [Setters](#setters)
 - [Themes](#themes)
@@ -125,6 +125,7 @@ https://www.nerdfonts.com/
 # Themes
 
 ## Gruvbox
+![Screenshot from 2023-02-13 06-20-11](https://user-images.githubusercontent.com/88646148/218453225-de186bff-7823-42de-9901-5ab89d8797d0.png)
 
 Gruvbox Material is a modified version of Gruvbox, the contrast is adjusted to be softer in order to protect developers' eyes.
 
@@ -142,6 +143,8 @@ Plug 'sainnhe/gruvbox-material'
 [here](https://neovimcraft.com/plugin/sainnhe/gruvbox-material/index.html)
 
 ## tokyonight
+
+![image](https://user-images.githubusercontent.com/88646148/218452879-693eaf18-29e0-4d75-8d7a-fbe2a40d802c.png)
 
 A dark and light Neovim theme written in Lua ported from the Visual Studio Code TokyoNight theme. Includes extra themes for Kitty, Alacritty, iTerm and Fish.
 
@@ -224,6 +227,7 @@ Plug 'neoclide/coc.nvim',{'branch':'release'}
 #Snipets
 
 ## sirver
+![68747470733a2f2f7261772e6769746875622e636f6d2f5369725665722f756c7469736e6970732f6d61737465722f646f632f64656d6f2e676966](https://user-images.githubusercontent.com/88646148/218453552-b771be6a-779a-4c7a-8a7b-2c19caef09af.gif)
 
 UltiSnips is the ultimate solution for snippets in Vim. It has many features, speed being one of them.
 
@@ -248,6 +252,7 @@ Plug 'honza/vim-snippets'
 [Read more](https://github.com/honza/vim-snippets)
 
 # Error Lens
+![image](https://user-images.githubusercontent.com/88646148/218453807-cc9d22b6-940d-433d-bcb0-7f47f7bc2927.png)
 
 A pretty list for showing diagnostics, references, telescope results, quickfix and location lists to help you solve all the trouble your code is causing.
 
@@ -298,6 +303,7 @@ Note buffers need save to disk to make this extension work as expected.
 [Read more](https://github.com/neoclide/coc-eslint)
 
 # Status bar
+![demo](https://user-images.githubusercontent.com/88646148/218453960-6d0cf930-68a4-4181-b072-6e8bcb844a05.gif)
 
 Lean & mean status/tabline for vim that's light as air
 
@@ -309,6 +315,7 @@ Plug 'vim-airline/vim-airline-themes'
 ```
 
 # Ident
+![image](https://user-images.githubusercontent.com/88646148/218454045-28146c7a-7840-4626-9ce5-0e8e5a20732a.png)
 
 This plugin is used for displaying thin vertical lines at each indentation level for code indented with spaces. For code indented with tabs I think there is no need to support it, because you can use :set list lcs=tab:\|\ (here is a space).
 
@@ -320,6 +327,7 @@ Plug 'Yggdroot/indentLine'
 [Read more](#https://github.com/Yggdroot/indentLine)
 
 # File manager
+![image](https://user-images.githubusercontent.com/88646148/218454091-72645af2-6732-45bf-ad00-7639d845dc6d.png)
 
 The NERDTree is a file system explorer for the Vim editor. Using this plugin, users can visually browse complex directory hierarchies, quickly open files for reading or editing, and perform basic file system operations.
 
@@ -366,6 +374,7 @@ Plug 'tpope/vim-surround'
 [Read more](https://github.com/tpope/vim-surround)
 
 # Telescope
+![68747470733a2f2f692e696d6775722e636f6d2f5454546a6136742e676966](https://user-images.githubusercontent.com/88646148/218454194-05660895-6b39-4826-bdb2-e713b79b876e.gif)
 
 telescope.nvim is a highly extendable fuzzy finder over lists. Built on the latest awesome features from neovim core. Telescope is centered around modularity, allowing for easy customization.
 
@@ -382,6 +391,7 @@ Plug 'David-Kunz/markid'
 # Git
 
 ## vim signify
+![signify-demo](https://user-images.githubusercontent.com/88646148/218454372-26ddee6b-01fe-490e-bd12-eb4521b46249.gif)
 
 Signify (or just Sy) uses the sign column to indicate added, modified and removed lines in a file that is managed by a version control system (VCS).
 
@@ -412,6 +422,7 @@ fugitive.vim: A Git wrapper so awesome, it should be illegal
 # Debugger
 
 ## vimspector
+![image](https://user-images.githubusercontent.com/88646148/218454532-f055f6d7-875c-4abd-8921-45900723a8e6.png)
 
 vimspector - A multi-language debugging system for Vim
 `Plug 'puremourning/vimspector'`
