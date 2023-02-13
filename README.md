@@ -10,7 +10,6 @@ this is my personal neovim configuration.
   - [tokyonight](#tokyonight)
 - [LSP](#lsp)
 - [Autocompletion](#autocompletion)
-  - [kiteco](#kiteco)
   - [vim-lspconfig](#vim-lspconfig)
   - [coc.nvim](#coc-nvim)
 - [Snipets](#snipets)
@@ -24,8 +23,6 @@ this is my personal neovim configuration.
 - [Status bar](#status-bar)
 - [File manager](#file-manager)
 - [Commentary](#commentary)
-- [Icons folder](#icons-folder)
-  - [vim-devicons](#vim-devicons)
 - [Auto Pairs](#auto-pairs)
 - [Surrond](#surrond)
 - [Telescope](#telescope)
@@ -39,7 +36,7 @@ this is my personal neovim configuration.
   - [fugitive](#fugitive)
 - [Debugger](#debugger)
   - [vimspector](#vimspector)
-- [issues](#issues)
+
 
 # How to use it?
 
@@ -110,7 +107,6 @@ https://www.nerdfonts.com/
 :set clipboard=unnamedplus
 :set cc=80
 :set ttyfast
-:set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
 :set laststatus=2
 :set incsearch
 :set smartcase
@@ -182,25 +178,6 @@ Plug 'neoclide/coc.nvim',{'release':'master','do':'yarn install --frozen-lockfil
 
 # Autocompletion
 
-## kiteco
-
-Kite is an AI-powered programming assistant that helps you write Python code inside Vim. Kite helps you write code faster by showing you the right information at the right time. Learn more about how Kite helps you while you're using Vim at https://kite.com/integrations/vim/.
-
-[Read more](https://github.com/kiteco/vim-plugin)
-
-```
-:set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
-```
-
-if you wanna use kite you have to use this configuration to activate the prompt
-
-```
-Plug 'kiteco/vim-plugin'
-
-```
-
-[issues](#issues)
-
 ## vim-lspconfig
 
 provides autocompletion
@@ -271,6 +248,7 @@ A lua fork of vim-devicons. This plugin provides the same icons as well as color
 Plug 'kyazdani42/nvim-web-devicons'
 
 ```
+[issues](#issues)
 
 [Read more](https://neovimcraft.com/plugin/kyazdani42/nvim-web-devicons/index.html)
 
@@ -429,6 +407,4 @@ vimspector - A multi-language debugging system for Vim
 
 [Read more](https://github.com/puremourning/vimspector)
 
-# issues
 
-kite has conflict with others autocompletion tools.
