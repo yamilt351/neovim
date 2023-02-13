@@ -183,6 +183,7 @@ Kite is an AI-powered programming assistant that helps you write Python code ins
 ```
 :set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
 ```
+if you wanna use kite you have to use this configuration to activate the prompt
 
 ```
 Plug 'kiteco/vim-plugin'
@@ -236,3 +237,15 @@ It is community-maintained and many people have contributed snippet files and ot
 Plug 'honza/vim-snippets'
 
 ```
+[Read more](https://github.com/honza/vim-snippets)
+
+# Error Lens
+
+A pretty list for showing diagnostics, references, telescope results, quickfix and location lists to help you solve all the trouble your code is causing.
+
+```
+Plug 'folke/trouble.nvim'
+
+```
+[Read more](https://github.com/folke/trouble.nvim)
+
