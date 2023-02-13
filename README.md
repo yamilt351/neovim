@@ -2,7 +2,7 @@
 
 this is my personal neovim configuration.
 
-#INDEx
+#INDEX
 
 - [Setters](#setters)
 - [Themes](#themes)
@@ -17,7 +17,7 @@ this is my personal neovim configuration.
   - [Sirver](#sirver)
   - [honza](#honza)
 - [Error Lens](#error-lens)
-- [Errors Icons](#erros-icons)
+- [Web Icons](#web-icons)
 - [Autocompletion Text based](autocompletion-text-based)
   - [Pangloss](#pangloss)
 - [Eslint](#eslint)
@@ -248,4 +248,15 @@ Plug 'folke/trouble.nvim'
 
 ```
 [Read more](https://github.com/folke/trouble.nvim)
+
+# Web Icons
+
+A lua fork of vim-devicons. This plugin provides the same icons as well as colors for each icon.
+
+``` 
+Plug 'kyazdani42/nvim-web-devicons'
+
+```
+[Read more](https://neovimcraft.com/plugin/kyazdani42/nvim-web-devicons/index.html)
+
 
