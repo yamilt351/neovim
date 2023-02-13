@@ -1,3 +1,4 @@
+
 :set mouse=a
 :syntax enable
 :set showcmd
@@ -20,7 +21,7 @@
 :set clipboard=unnamedplus
 :set cc=80
 :set ttyfast
-:set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
+:set statusline
 :set laststatus=2
 :set incsearch
 :set smartcase
@@ -37,13 +38,10 @@ Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 "lsp
 Plug 'neoclide/coc.nvim',{'release':'master','do':'yarn install --frozen-lockfile'}
-Plug 'alvan/vim-closetag'
-
 "instalador de plugins 
 Plug 'junegunn/vim-plug'
 
 "autocompletado  requiere sudo npm install -g typescript typescript-language-server
-Plug 'kiteco/vim-plugin'
 Plug 'neovim/nvim-lspconfig'
 Plug 'neoclide/coc.nvim',{'branch':'release'}
 
@@ -58,11 +56,8 @@ Plug 'folke/trouble.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 
 "autocompletado en base a texto 
-" Plug 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript'
 Plug 'neoclide/coc-eslint'
-
-"formateador de texto 
-Plug 'mattn/emmet-vim'
 
 "indent 
 Plug 'Yggdroot/indentLine'
@@ -77,8 +72,7 @@ Plug 'scrooloose/nerdtree'
 "Commentary 
 Plug 'tpope/vim-commentary'
 
-"Iconos de carpetas requiere nerd font 
-Plug 'ryanoasis/vim-devicons'
+"auto pairs
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 
@@ -90,17 +84,14 @@ Plug 'nvim-treesitter/nvim-treesitter',{'do': ':TSUpdate'}
 Plug 'David-Kunz/markid'
 "diferencias entre archivos 
 Plug 'mhinz/vim-signify'
-Plug 'ap/vim-css-color'
 
 " git integrations 
-Plug 'tpope/vim-fugitive'
+"Plug 'tpope/vim-fugitive'
 Plug 'lewis6991/gitsigns.nvim'
 
 " debugger
 Plug 'puremourning/vimspector'
-"transparent 
 call plug#end()
-
 
 
 "//////////////////////////////////////////////////////////////////////////////
@@ -119,9 +110,6 @@ colorscheme tokyonight-storm
 "//////////////////////////////////////////////////////////////////////////////
 
 "Snippets
-let g:kite_supported_languages = ['*']
-let g:kite_auto_complete=1
-let g:kite_tab_complete=1
 let g:UltiSnipsExpandTrigger="<C-l>"
 
 
