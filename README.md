@@ -302,4 +302,12 @@ Lean & mean status/tabline for vim that's light as air
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 ```
+# Ident 
+This plugin is used for displaying thin vertical lines at each indentation level for code indented with spaces. For code indented with tabs I think there is no need to support it, because you can use :set list lcs=tab:\|\ (here is a space).
+
+```
+Plug 'Yggdroot/indentLine'
+
+```
+[Read more](#https://github.com/Yggdroot/indentLine)
 
