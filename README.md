@@ -24,7 +24,7 @@ this is my personal neovim configuration.
 - [Status bar](#status-bar)
 - [File manager](#file-manager)
 - [Commentary](#commentary)
-- [Icons folder](#icons folder)
+- [Icons folder](#icons-folder)
   - [vim-devicons](#vim-devicons)
 - [Auto Pairs](#auto-pairs)
 - [Surrond](#surrond)
@@ -39,6 +39,7 @@ this is my personal neovim configuration.
   - [fugitive](#fugitive)
 - [Debugger](#debugger)
   - [vimspector](#vimspector)
+- [issues](#issues)
 - [Others](#others)
 
 # How to use it?
@@ -187,6 +188,7 @@ Kite is an AI-powered programming assistant that helps you write Python code ins
 Plug 'kiteco/vim-plugin'
 
 ```
+[issues](#issues)
 
 ## vim-lspconfig
 
