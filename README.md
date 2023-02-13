@@ -183,12 +183,14 @@ Kite is an AI-powered programming assistant that helps you write Python code ins
 ```
 :set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
 ```
+
 if you wanna use kite you have to use this configuration to activate the prompt
 
 ```
 Plug 'kiteco/vim-plugin'
 
 ```
+
 [issues](#issues)
 
 ## vim-lspconfig
@@ -237,6 +239,7 @@ It is community-maintained and many people have contributed snippet files and ot
 Plug 'honza/vim-snippets'
 
 ```
+
 [Read more](https://github.com/honza/vim-snippets)
 
 # Error Lens
@@ -247,27 +250,56 @@ A pretty list for showing diagnostics, references, telescope results, quickfix a
 Plug 'folke/trouble.nvim'
 
 ```
+
 [Read more](https://github.com/folke/trouble.nvim)
 
 # Web Icons
 
 A lua fork of vim-devicons. This plugin provides the same icons as well as colors for each icon.
 
-``` 
+```
 Plug 'kyazdani42/nvim-web-devicons'
 
 ```
+
 [Read more](https://neovimcraft.com/plugin/kyazdani42/nvim-web-devicons/index.html)
 
-# Autocompletion Text based 
+# Autocompletion Text based
 
 ## Pangloss
 
 JavaScript bundle for vim, this bundle provides syntax highlighting and improved indentation.
 
-``` 
+```
  Plug 'pangloss/vim-javascript'
 
 ```
+
 [issues](issues)
+[Read more](https://github.com/pangloss/vim-javascript)
+
+# Eslint
+
+Eslint language server extension for coc.nvim.
+
+Forked from vscode-eslint.
+
+Note buffers need save to disk to make this extension work as expected.
+
+    ```
+    Plug 'neoclide/coc-eslint'
+    ```
+
+[Read more](https://github.com/neoclide/coc-eslint)
+
+# Status bar
+
+Lean & mean status/tabline for vim that's light as air
+
+[Read more](https://github.com/vim-airline/vim-airline)
+
+```
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+```
 
