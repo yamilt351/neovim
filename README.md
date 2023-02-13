@@ -40,7 +40,6 @@ this is my personal neovim configuration.
 - [Debugger](#debugger)
   - [vimspector](#vimspector)
 - [issues](#issues)
-- [Others](#others)
 
 # How to use it?
 
@@ -78,6 +77,12 @@ sudo npm install -g typescript typescript-language-server
 
 ```
 :CocInstall coc-html coc-tsserver coc-json coc-emmet coc-prettier
+```
+
+- Nerdfonts
+
+```
+https://www.nerdfonts.com/
 ```
 
 # Setters
@@ -302,16 +307,19 @@ Lean & mean status/tabline for vim that's light as air
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 ```
-# Ident 
+
+# Ident
+
 This plugin is used for displaying thin vertical lines at each indentation level for code indented with spaces. For code indented with tabs I think there is no need to support it, because you can use :set list lcs=tab:\|\ (here is a space).
 
 ```
 Plug 'Yggdroot/indentLine'
 
 ```
+
 [Read more](#https://github.com/Yggdroot/indentLine)
 
-# Status bar
+# File manager
 
 The NERDTree is a file system explorer for the Vim editor. Using this plugin, users can visually browse complex directory hierarchies, quickly open files for reading or editing, and perform basic file system operations.
 
@@ -319,6 +327,97 @@ The NERDTree is a file system explorer for the Vim editor. Using this plugin, us
 Plug 'scrooloose/nerdtree'
 
 ```
+
 [Read more](https://github.com/preservim/nerdtree)
 
+# Commentary
 
+Comment stuff out. Use gcc to comment out a line (takes a count), gc to comment out the target of a motion (for example, gcap to comment out a paragraph), gc in visual mode to comment out the selection, and gc in operator pending mode to target a comment. You can also use it as a command, either with a range like :7,17Commentary, or as part of a :global invocation like with :g/TODO/Commentary. That's it.
+
+I wrote this because 5 years after Vim added support for mapping an operator, I still couldn't find a commenting plugin that leveraged that feature (I overlooked tcomment.vim). Striving for minimalism, it weighs in at under 100 lines of code.
+
+Oh, and it uncomments, too. The above maps actually toggle, and gcgc uncomments a set of adjacent commented lines.
+
+```
+Plug 'tpope/vim-commentary'
+
+```
+
+[Read more](#https://github.com/tpope/vim-commentary)
+
+# Auto Pairs
+
+Insert or delete brackets, parens, quotes in pair.
+
+```
+Plug 'jiangmiao/auto-pairs'
+```
+
+[Read more](https://github.com/jiangmiao/auto-pairs)
+
+# Surrond
+
+Surround.vim is all about "surroundings": parentheses, brackets, quotes, XML tags, and more. The plugin provides mappings to easily delete, change and add such surroundings in pairs.
+
+```
+Plug 'tpope/vim-surround'
+```
+
+[Read more](https://github.com/tpope/vim-surround)
+
+# Telescope
+
+telescope.nvim is a highly extendable fuzzy finder over lists. Built on the latest awesome features from neovim core. Telescope is centered around modularity, allowing for easy customization.
+
+```
+Plug 'BurntSushi/ripgrep'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1'}
+Plug 'nvim-treesitter/nvim-treesitter',{'do': ':TSUpdate'}
+Plug 'David-Kunz/markid'
+```
+
+[Read more](https://github.com/nvim-telescope/telescope.nvim)
+
+# Git
+
+## vim signify
+
+Signify (or just Sy) uses the sign column to indicate added, modified and removed lines in a file that is managed by a version control system (VCS).
+
+```
+Plug 'mhinz/vim-signify'
+```
+
+[Read more](https://github.com/mhinz/vim-signify)
+
+## git signs
+
+Super fast git decorations implemented purely in lua/teal.
+
+```
+Plug 'lewis6991/gitsigns.nvim'
+```
+
+[Read more](https://github.com/lewis6991/gitsigns.nvim)
+
+## fugitive
+
+fugitive.vim: A Git wrapper so awesome, it should be illegal
+`   Plug 'tpope/vim-fugitive'
+  `
+
+[Read more](https://github.com/doronbehar/nvim-fugitive)
+
+# Debugger
+
+## vimspector
+
+vimspector - A multi-language debugging system for Vim
+`Plug 'puremourning/vimspector'`
+
+[Read more](https://github.com/puremourning/vimspector)
+
+# issues
+
+kite has conflict with others autocompletion tools.
