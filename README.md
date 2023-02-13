@@ -259,4 +259,15 @@ Plug 'kyazdani42/nvim-web-devicons'
 ```
 [Read more](https://neovimcraft.com/plugin/kyazdani42/nvim-web-devicons/index.html)
 
+# Autocompletion Text based 
+
+## Pangloss
+
+JavaScript bundle for vim, this bundle provides syntax highlighting and improved indentation.
+
+``` 
+ Plug 'pangloss/vim-javascript'
+
+```
+[issues](issues)
 
