@@ -1,5 +1,5 @@
 # NEOVIM init.vim
-
+``
 :set mouse=a
 :syntax enable
 :set showcmd
@@ -397,9 +397,9 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-
+``
 # CocConfig
-
+``
 {
   "suggest.noselect": true,
   "suggest.enablePreselect": false,
@@ -434,3 +434,4 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
   "coc.preferences.formatOnType": true
 }
 
+``
