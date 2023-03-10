@@ -1,4 +1,7 @@
 # NEOVIM init.vim
+
+## Setters
+
 ```
 :set mouse=a
 :syntax enable
@@ -33,7 +36,12 @@ filetype plugin indent on
 :set foldmethod=indent
 :set noruler
 ```
+# Dependencies:
+- Vim plug
+- NodeJs
+- (this is the last step) :CocInstall coc-snippets coc-prettier coc-pairs coc-html coc-highlight coc-eslint coc-emmet coc-tsserver coc-kite coc-css
 
+##Plugins
 ```
 call plug#begin('~/.vim/plugged')
 
@@ -78,7 +86,7 @@ Plug 'johann2357/nvim-smartbufs'
 call plug#end()
 ```
 
-
+## Plugins let
 ```
 " NERDTreeToggle
 let NERDTreeShowHidden=1
@@ -131,9 +139,9 @@ let g:javascript_conceal_static               = "•"
 let g:javascript_conceal_super                = "Ω"
 let g:javascript_conceal_arrow_function       = "⇒"
 ```
-"///////////////////////////////////////////////////////////////////////////
 
 
+## Lua config
 ```
 lua << EOF
 require("trouble").setup{}
@@ -166,13 +174,16 @@ require('nvim-search-and-replace').setup{
 
 EOF
 ```
+
+
+## Keybinds 
 ```
 " configuracion de comentarios
 nnoremap <space>, :Commentary<CR>
 vnoremap <space>, :Commentary<CR>  
 
 "configuracion de format
-":CocInstall coc-html coc-tsserver coc-json coc-emmet coc-prettier
+:CocInstall coc-html coc-tsserver coc-json coc-emmet coc-prettier
 nnoremap <space>f :call CocAction('format')<CR>:w<CR>
 
 " buffer
@@ -200,12 +211,6 @@ nnoremap <space>qq :w<CR>:bd<CR>:bnext<CR>
 nnoremap <space>nn :bnext<CR>
 nnoremap <space>NN :bprev<CR>
 
-" DEBUGGER CONFIG 
-nnoremap <space>x <CR>
-nnoremap <space>X <CR>
-nnoremap <space>xi <CR>
-nnoremap <space>xr <CR>
-
 
 "TREE Configuracion
 nnoremap <F2> :NERDTreeToggle<CR>
@@ -219,6 +224,7 @@ nnoremap <space>gg :vertical Git<CR>:split<CR>:ter<CR>
 nnoremap <space>v :vsplit<CR>
 ```
 
+## DANGER ZONE COC - CONFIG 
 ```
 "COC configuracion
 
@@ -388,6 +394,8 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 ```
+
+
 # CocConfig
 ```
 {
