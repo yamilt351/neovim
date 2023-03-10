@@ -1,5 +1,5 @@
 # NEOVIM init.vim
-``
+```
 :set mouse=a
 :syntax enable
 :set showcmd
@@ -32,9 +32,9 @@ filetype plugin indent on
 :set confirm
 :set foldmethod=indent
 :set noruler
+```
 
-
-
+```
 call plug#begin('~/.vim/plugged')
 
 "tema
@@ -76,10 +76,10 @@ Plug 'sindrets/diffview.nvim'
 "buffer naveigation
 Plug 'johann2357/nvim-smartbufs'
 call plug#end()
+```
 
 
-
-
+```
 " NERDTreeToggle
 let NERDTreeShowHidden=1
 
@@ -130,11 +130,11 @@ let g:javascript_conceal_prototype            = "¶"
 let g:javascript_conceal_static               = "•"
 let g:javascript_conceal_super                = "Ω"
 let g:javascript_conceal_arrow_function       = "⇒"
-
+```
 "///////////////////////////////////////////////////////////////////////////
 
 
-
+```
 lua << EOF
 require("trouble").setup{}
 
@@ -165,8 +165,8 @@ require('nvim-search-and-replace').setup{
 }
 
 EOF
-
-
+```
+```
 " configuracion de comentarios
 nnoremap <space>, :Commentary<CR>
 vnoremap <space>, :Commentary<CR>  
@@ -217,19 +217,9 @@ nnoremap <space>m :DiffviewOpen<CR>
 " Terminal configuracion
 nnoremap <space>gg :vertical Git<CR>:split<CR>:ter<CR>
 nnoremap <space>v :vsplit<CR>
+```
 
-
-
-
-
-
-
-
-
-
-
-
-"//_--__--_---__---__---__---__---__---__---__---_---
+```
 "COC configuracion
 
 " TextEdit might fail if hidden is not set.
@@ -397,9 +387,9 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-``
+```
 # CocConfig
-``
+```
 {
   "suggest.noselect": true,
   "suggest.enablePreselect": false,
@@ -433,5 +423,4 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
   "diagnostic.enableHighlightLineNumber": true,
   "coc.preferences.formatOnType": true
 }
-
-``
+```
