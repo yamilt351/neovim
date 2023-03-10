@@ -1,410 +1,436 @@
-# neovim
+# NEOVIM init.vim
 
-this is my personal neovim configuration.
-
-# INDEX
-
-- [Setters](#setters)
-- [Themes](#themes)
-  - [Gruvbox](#gruvbox)
-  - [tokyonight](#tokyonight)
-- [LSP](#lsp)
-- [Autocompletion](#autocompletion)
-  - [vim-lspconfig](#vim-lspconfig)
-  - [coc.nvim](#coc-nvim)
-- [Snipets](#snipets)
-  - [Sirver](#sirver)
-  - [honza](#honza)
-- [Error Lens](#error-lens)
-- [Web Icons](#web-icons)
-- [Autocompletion Text based](autocompletion-text-based)
-  - [Pangloss](#pangloss)
-- [Eslint](#eslint)
-- [Status bar](#status-bar)
-- [File manager](#file-manager)
-- [Commentary](#commentary)
-- [Auto Pairs](#auto-pairs)
-- [Surrond](#surrond)
-- [Telescope](#telescope)
-  - [ripgrep](#ripgrep)
-  - [plenary](#plenary)
-  - [treesitter](#tressiter)
-  - [markid](#markid)
-- [Git](#git)
-  - [vim signify](#vim-signify)
-  - [git signs](#git-signs)
-  - [fugitive](#fugitive)
-- [Debugger](#debugger)
-  - [vimspector](#vimspector)
-
-
-# How to use it?
-
-```
-git clone https://github.com/yamilt351/neovim.git
-```
-
-## Dependencies
-
-- Git
-
-```
-sudo apt update && sudo apt install git
-```
-
-- Node
-
-```
-sudo apt update && sudo apt install node
-```
-
-- Vim Plug
-
-```
-Plug "junegunn/vim-plug"
-```
-
-- Autocompletion
-
-```
-sudo npm install -g typescript typescript-language-server
-```
-
-- Formatter
-
-```
-:CocInstall coc-html coc-tsserver coc-json coc-emmet coc-prettier
-```
-
-- Nerdfonts
-
-```
-https://www.nerdfonts.com/
-```
-
-# Setters
-
-```
 :set mouse=a
 :syntax enable
 :set showcmd
 :set encoding=utf-8
 :set showmatch
-:set relativenumber
+:set number
 :set sw=2
 :set cursorline
 :set splitbelow
 :set splitright
 :set autoindent
-:set tabstop=4
+:set tabstop=2
 :set smarttab
 :set softtabstop=4
+:set pumheight=10
 :set completeopt=menuone,noselect
 :set omnifunc=syntaxcomplete#Complete
 :set shiftwidth=4
 :set hlsearch
 :set spell
-:set clipboard=unnamedplus
+:set clipboard+=unnamedplus
 :set cc=80
 :set ttyfast
+filetype plugin indent on
 :set laststatus=2
 :set incsearch
 :set smartcase
 :set wrap
 :set visualbell
 :set confirm
-:set background:dark
+:set foldmethod=indent
+:set noruler
 
 
-```
 
-# Themes
+call plug#begin('~/.vim/plugged')
 
-## Gruvbox
-![Screenshot from 2023-02-13 06-20-11](https://user-images.githubusercontent.com/88646148/218453225-de186bff-7823-42de-9901-5ab89d8797d0.png)
+"tema
+Plug 'sainnhe/gruvbox-material'
+" search and replace
+Plug 's1n7ax/nvim-search-and-replace'
+"lsp
+Plug 'neoclide/coc.nvim',{'release':'master','do':'yarn install --frozen-lockfile'}
+"instalador de plugins 
+Plug 'junegunn/vim-plug'
+"autocompletado  requiere sudo npm install -g typescript typescript-language-server
+Plug 'neovim/nvim-lspconfig'
+Plug 'neoclide/coc.nvim',{'branch':'release'}
+"error lens
+Plug 'folke/trouble.nvim'
+"iconos de errores
+Plug 'preservim/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+"color linea de indentacion 
+Plug 'Yggdroot/indentLine'
+"autocompletado en base a texto 
+Plug 'neoclide/coc-eslint'
+"autopairs
+Plug 'windwp/nvim-autopairs'
+" highlight 
+Plug 'pangloss/vim-javascript'
+"barra de status
+Plug 'vim-airline/vim-airline'
+"Commentary 
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+"diferencias entre archivos 
+Plug 'mhinz/vim-signify'
+" git integrations 
+Plug 'tpope/vim-fugitive'
+Plug 'lewis6991/gitsigns.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'sindrets/diffview.nvim'
+"buffer naveigation
+Plug 'johann2357/nvim-smartbufs'
+call plug#end()
 
-Gruvbox Material is a modified version of Gruvbox, the contrast is adjusted to be softer in order to protect developers' eyes.
 
-```
-let g:gruvbox_material_background='medium'
+
+
+" NERDTreeToggle
+let NERDTreeShowHidden=1
+
+" Themes 
+set background:dark
+let g:gruvbox_material_background='hard'
 colorscheme gruvbox-material
 
-```
+"indentLine config
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_setColors = 0
 
-```
-Plug 'sainnhe/gruvbox-material'
 
-```
+"configuracion de airline ////////////////////////////////////////////////
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'jsformatter'
+let g:tmuxline_powerline_separators = 0
+
 
-[here](https://neovimcraft.com/plugin/sainnhe/gruvbox-material/index.html)
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+" powerline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.dirty='⚡'
 
-## tokyonight
 
-![image](https://user-images.githubusercontent.com/88646148/218452879-693eaf18-29e0-4d75-8d7a-fbe2a40d802c.png)
+
+let g:javascript_plugin_jsdoc = 1
+set conceallevel=1
+let g:javascript_conceal_function             = "ƒ"
+let g:javascript_conceal_null                 = "ø"
+let g:javascript_conceal_this                 = "@"
+let g:javascript_conceal_return               = "⇚"
+let g:javascript_conceal_undefined            = "¿"
+let g:javascript_conceal_NaN                  = "ℕ"
+let g:javascript_conceal_prototype            = "¶"
+let g:javascript_conceal_static               = "•"
+let g:javascript_conceal_super                = "Ω"
+let g:javascript_conceal_arrow_function       = "⇒"
 
-A dark and light Neovim theme written in Lua ported from the Visual Studio Code TokyoNight theme. Includes extra themes for Kitty, Alacritty, iTerm and Fish.
+"///////////////////////////////////////////////////////////////////////////
 
-```
-let g:lightline = {'colorscheme': 'tokyonight'}
-colorscheme tokyonight-night
-colorscheme tokyonight-storm
-colorscheme tokyonight-day
-colorscheme tokyonight-moon
 
-```
 
-```
-Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+lua << EOF
+require("trouble").setup{}
 
-```
+require"lspconfig".tsserver.setup{}
 
-[here](https://github.com/folke/tokyonight.nvim)
+require('gitsigns').setup()
 
-# LSP
+require("nvim-autopairs").setup {}
 
-Nvim supports the Language Server Protocol (LSP), which means it acts as
-a client to LSP servers and includes a Lua framework vim.lsp for building
-enhanced LSP tools.
-`https://microsoft.github.io/language-server-protocol/`
-LSP facilitates features like go-to-definition, find-references, hover,
-completion, rename, format, refactor, etc., using semantic whole-project
-analysis (unlike ctags).
-[Read more](https://neovim.io/doc/user/lsp.html)
+require('nvim-search-and-replace').setup{
+    -- file patters to ignore
+    ignore = {'**/node_modules/**', '**/.git/**',  '**/.gitignore', '**/.gitmodules','build/**'},
 
-```
-Plug 'neoclide/coc.nvim',{'release':'master','do':'yarn install --frozen-lockfile'}
+    -- save the changes after replace
+    update_changes = false,
 
-```
+    -- keymap for search and replace
+    replace_keymap = '<space>gr',
 
-# Autocompletion
+    -- keymap for search and replace ( this does not care about ignored files )
+    replace_all_keymap = '<space>gR',
 
-## vim-lspconfig
+    -- keymap for search and replace
+    replace_and_save_keymap = '<space>gu',
 
-provides autocompletion
+    -- keymap for search and replace ( this does not care about ignored files )
+    replace_all_and_save_keymap = '<spacer>gU',
+}
 
-```
-Plug 'neovim/nvim-lspconfig'
+EOF
 
-```
 
-[Read more](https://github.com/neovim/nvim-lspconfig)
+" configuracion de comentarios
+nnoremap <space>, :Commentary<CR>
+vnoremap <space>, :Commentary<CR>  
 
-## coc.vim
+"configuracion de format
+":CocInstall coc-html coc-tsserver coc-json coc-emmet coc-prettier
+nnoremap <space>f :call CocAction('format')<CR>:w<CR>
 
-autocompletion tool
+" buffer
+nnoremap <space>1 :lua require("nvim-smartbufs").goto_buffer(1)<CR>
+nnoremap <space>2 :lua require("nvim-smartbufs").goto_buffer(2)<CR>
+nnoremap <space>3 :lua require("nvim-smartbufs").goto_buffer(3)<CR>
+nnoremap <space>4 :lua require("nvim-smartbufs").goto_buffer(4)<CR>
+nnoremap <space>5 :lua require("nvim-smartbufs").goto_buffer(5)<CR>
+nnoremap <space>6 :lua require("nvim-smartbufs").goto_buffer(6)<CR>
+nnoremap <space>7 :lua require("nvim-smartbufs").goto_buffer(7)<CR>
+nnoremap <space>8 :lua require("nvim-smartbufs").goto_buffer(8)<CR>
+nnoremap <space>9 :lua require("nvim-smartbufs").goto_buffer(9)<CR>
+" Delete the N buffer according to :ls buffer list
+nnoremap <space>q1 :lua require("nvim-smartbufs").close_buffer(1)<CR>
+nnoremap <space>q2 :lua require("nvim-smartbufs").close_buffer(2)<CR>
+nnoremap <space>q3 :lua require("nvim-smartbufs").close_buffer(3)<CR>
+nnoremap <space>q4 :lua require("nvim-smartbufs").close_buffer(4)<CR>
+nnoremap <space>q5 :lua require("nvim-smartbufs").close_buffer(5)<CR>
+nnoremap <space>q6 :lua require("nvim-smartbufs").close_buffer(6)<CR>
+nnoremap <space>q7 :lua require("nvim-smartbufs").close_buffer(7)<CR>
+nnoremap <space>q8 :lua require("nvim-smartbufs").close_buffer(8)<CR>
+nnoremap <space>q9 :lua require("nvim-smartbufs").close_buffer(9)<CR>
 
-```
-Plug 'neoclide/coc.nvim',{'branch':'release'}
+nnoremap <space>qq :w<CR>:bd<CR>:bnext<CR>
+nnoremap <space>nn :bnext<CR>
+nnoremap <space>NN :bprev<CR>
 
+" DEBUGGER CONFIG 
+nnoremap <space>x <CR>
+nnoremap <space>X <CR>
+nnoremap <space>xi <CR>
+nnoremap <space>xr <CR>
 
-```
 
-[Read more](https://github.com/neoclide/coc.nvim)
+"TREE Configuracion
+nnoremap <F2> :NERDTreeToggle<CR>
+vnoremap <F2> :NERDTreeToggle<CR>
 
-#Snipets
+"MERGE CONFLICT FILES 
+nnoremap <space>m :DiffviewOpen<CR>
 
-## sirver
-![68747470733a2f2f7261772e6769746875622e636f6d2f5369725665722f756c7469736e6970732f6d61737465722f646f632f64656d6f2e676966](https://user-images.githubusercontent.com/88646148/218453552-b771be6a-779a-4c7a-8a7b-2c19caef09af.gif)
+" Terminal configuracion
+nnoremap <space>gg :vertical Git<CR>:split<CR>:ter<CR>
+nnoremap <space>v :vsplit<CR>
 
-UltiSnips is the ultimate solution for snippets in Vim. It has many features, speed being one of them.
 
-```
-Plug 'SirVer/ultisnips'
 
-```
 
-[Read more](https://github.com/SirVer/ultisnips)
 
-## honza
 
-This repository contains snippets files for various programming languages.
 
-It is community-maintained and many people have contributed snippet files and other improvements already.
 
-```
-Plug 'honza/vim-snippets'
 
-```
 
-[Read more](https://github.com/honza/vim-snippets)
 
-# Error Lens
-![image](https://user-images.githubusercontent.com/88646148/218453807-cc9d22b6-940d-433d-bcb0-7f47f7bc2927.png)
 
-A pretty list for showing diagnostics, references, telescope results, quickfix and location lists to help you solve all the trouble your code is causing.
+"//_--__--_---__---__---__---__---__---__---__---_---
+"COC configuracion
 
-```
-Plug 'folke/trouble.nvim'
+" TextEdit might fail if hidden is not set.
+set hidden
 
-```
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
 
-[Read more](https://github.com/folke/trouble.nvim)
-
-# Web Icons
-
-A lua fork of vim-devicons. This plugin provides the same icons as well as colors for each icon.
-
-```
-Plug 'kyazdani42/nvim-web-devicons'
-
-```
-[issues](#issues)
-
-[Read more](https://neovimcraft.com/plugin/kyazdani42/nvim-web-devicons/index.html)
-
-# Autocompletion Text based
-
-## Pangloss
-
-JavaScript bundle for vim, this bundle provides syntax highlighting and improved indentation.
-
-```
- Plug 'pangloss/vim-javascript'
-
-```
-
-[issues](issues)
-[Read more](https://github.com/pangloss/vim-javascript)
-
-# Eslint
-
-Eslint language server extension for coc.nvim.
-
-Forked from vscode-eslint.
-
-Note buffers need save to disk to make this extension work as expected.
-
-    ```
-    Plug 'neoclide/coc-eslint'
-    ```
-
-[Read more](https://github.com/neoclide/coc-eslint)
-
-# Status bar
-![demo](https://user-images.githubusercontent.com/88646148/218453960-6d0cf930-68a4-4181-b072-6e8bcb844a05.gif)
-
-Lean & mean status/tabline for vim that's light as air
-
-[Read more](https://github.com/vim-airline/vim-airline)
-
-```
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-```
-
-# Ident
-![image](https://user-images.githubusercontent.com/88646148/218454045-28146c7a-7840-4626-9ce5-0e8e5a20732a.png)
-
-This plugin is used for displaying thin vertical lines at each indentation level for code indented with spaces. For code indented with tabs I think there is no need to support it, because you can use :set list lcs=tab:\|\ (here is a space).
-
-```
-Plug 'Yggdroot/indentLine'
-
-```
-
-[Read more](#https://github.com/Yggdroot/indentLine)
-
-# File manager
-![image](https://user-images.githubusercontent.com/88646148/218454091-72645af2-6732-45bf-ad00-7639d845dc6d.png)
-
-The NERDTree is a file system explorer for the Vim editor. Using this plugin, users can visually browse complex directory hierarchies, quickly open files for reading or editing, and perform basic file system operations.
-
-```
-Plug 'scrooloose/nerdtree'
-
-```
-
-[Read more](https://github.com/preservim/nerdtree)
-
-# Commentary
-
-Comment stuff out. Use gcc to comment out a line (takes a count), gc to comment out the target of a motion (for example, gcap to comment out a paragraph), gc in visual mode to comment out the selection, and gc in operator pending mode to target a comment. You can also use it as a command, either with a range like :7,17Commentary, or as part of a :global invocation like with :g/TODO/Commentary. That's it.
-
-I wrote this because 5 years after Vim added support for mapping an operator, I still couldn't find a commenting plugin that leveraged that feature (I overlooked tcomment.vim). Striving for minimalism, it weighs in at under 100 lines of code.
-
-Oh, and it uncomments, too. The above maps actually toggle, and gcgc uncomments a set of adjacent commented lines.
-
-```
-Plug 'tpope/vim-commentary'
-
-```
-
-[Read more](#https://github.com/tpope/vim-commentary)
-
-# Auto Pairs
-
-Insert or delete brackets, parens, quotes in pair.
-
-```
-Plug 'jiangmiao/auto-pairs'
-```
-
-[Read more](https://github.com/jiangmiao/auto-pairs)
-
-# Surrond
-
-Surround.vim is all about "surroundings": parentheses, brackets, quotes, XML tags, and more. The plugin provides mappings to easily delete, change and add such surroundings in pairs.
-
-```
-Plug 'tpope/vim-surround'
-```
-
-[Read more](https://github.com/tpope/vim-surround)
-
-# Telescope
-![68747470733a2f2f692e696d6775722e636f6d2f5454546a6136742e676966](https://user-images.githubusercontent.com/88646148/218454194-05660895-6b39-4826-bdb2-e713b79b876e.gif)
-
-telescope.nvim is a highly extendable fuzzy finder over lists. Built on the latest awesome features from neovim core. Telescope is centered around modularity, allowing for easy customization.
-
-```
-Plug 'BurntSushi/ripgrep'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1'}
-Plug 'nvim-treesitter/nvim-treesitter',{'do': ':TSUpdate'}
-Plug 'David-Kunz/markid'
-```
-
-[Read more](https://github.com/nvim-telescope/telescope.nvim)
-
-# Git
-
-## vim signify
-![signify-demo](https://user-images.githubusercontent.com/88646148/218454372-26ddee6b-01fe-490e-bd12-eb4521b46249.gif)
-
-Signify (or just Sy) uses the sign column to indicate added, modified and removed lines in a file that is managed by a version control system (VCS).
-
-```
-Plug 'mhinz/vim-signify'
-```
-
-[Read more](https://github.com/mhinz/vim-signify)
-
-## git signs
-
-Super fast git decorations implemented purely in lua/teal.
-
-```
-Plug 'lewis6991/gitsigns.nvim'
-```
-
-[Read more](https://github.com/lewis6991/gitsigns.nvim)
-
-## fugitive
-
-fugitive.vim: A Git wrapper so awesome, it should be illegal
-`   Plug 'tpope/vim-fugitive'
-  `
-
-[Read more](https://github.com/doronbehar/nvim-fugitive)
-
-# Debugger
-
-## vimspector
-![image](https://user-images.githubusercontent.com/88646148/218454532-f055f6d7-875c-4abd-8921-45900723a8e6.png)
-
-vimspector - A multi-language debugging system for Vim
-`Plug 'puremourning/vimspector'`
-
-[Read more](https://github.com/puremourning/vimspector)
-
+" Give more space for displaying messages.
+set cmdheight=2
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("nvim-0.5.0") || has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+endif
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+endif 
+" Use `[[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Run the Code Lens action on the current line.
+nmap <leader>cl  <Plug>(coc-codelens-action)
+
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of language server.
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocActionAsync('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
+
+" Add (Neo)Vim's native statusline support.
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
+
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Mappings for CoCList
+" Show all diagnostics.
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+# CocConfig
+
+{
+  "suggest.noselect": true,
+  "suggest.enablePreselect": false,
+  "suggest.autoTrigger": "always",
+  "suggest.timeout": 5000,
+  "suggest.detailField": "preview",
+  "codeLens.enable": true,
+  "eslint.format.enable": true,
+  "eslint.enable": true,
+  "eslint.packageManager": "npm",
+  "eslint.fixOnSaveTimeout": 1000,
+  "eslint.alwaysShowStatus": true,
+  "eslint.run": "onType",
+  "javascript.suggest.enabled": true,
+  "javascript.suggest.autoImports": true,
+  "diagnostic.messageTarget": "float",
+  "diagnostic.checkCurrentLine": true,
+  "javascript.format.insertSpaceAfterSemicolonInForStatements": true,
+  "diagnostic.warningSign": "⚠",
+  "diagnostic.virtualTextFormat": "%message",
+  "colors.enable": true,
+  "highlight.colors.enable": true,
+  "css.format.enable": true,
+  "javascript.format.enable": true,
+  "javascript.autoClosingTags": true,
+  "javascript.preferences.quoteStyle": "single",
+  "highlight.colorNames.enable": true,
+  "snippet.highlight": true,
+  "colors.highlightPriority": 1000,
+  "highlight.trace": "messages",
+  "diagnostic.enableHighlightLineNumber": true,
+  "coc.preferences.formatOnType": true
+}
 
